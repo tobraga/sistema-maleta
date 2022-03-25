@@ -1,0 +1,59 @@
+@use 'sass:math'
+    
+@function number($string)
+    $strings: "0" "1" "2" "3" "4" "5" "6" "7" "8" "9"
+    $numbers: 0 1 2 3 4 5 6 7 8 9
+
+    $result: 0
+    $minus: false
+    $divider: false
+
+
+    @if str-slice($string, 1, 1) == "-"
+
+        $minus: true
+        $string: str-slice($string, 2, str-length($string))
+
+    @if str-index($string, '.')
+
+        $divider: str-index($string, '.')
+
+
+    @for $i from 1 through str-length($string)
+
+        $character: str-slice($string, $i, $i)
+        $index: index($strings, $character) // retorna o index do elemento na lista especificado pelo valor passado no segundo argumento
+    
+        @if $divider and $i >= $divider
+        
+            @if $i == $divider
+                
+                $result: $result * 1
+
+            @else if $i > $divider and $divider != 0
+
+                $number: nth($numbers, $index)
+                $result: $result +  math.div($number, math.pow(10, $i - $divider))
+        
+            @else if $i > $divider and $divider == 0
+
+                $result: $result 
+
+        @else if not $index
+
+            @warn "Unknown character `#{$character}`."
+            @return false
+        
+        @else 
+
+            $number: nth($numbers, $index) // retorna o valor do elemento que está na posição especificada pelo $index
+            $result: $result * 10 + $number
+
+
+    @if $minus
+
+        @return $result * -1
+
+    @else 
+
+        @return $result

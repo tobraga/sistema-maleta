@@ -1,0 +1,11 @@
+@mixin input-1($color-1)
+    outline: solid 0rem  transparentize($color-1, .5)
+    border: solid 0.1rem darken($light, 20)
+    background-color: $light
+    padding: .05rem
+    border-radius: 0.313rem
+    transition: all .15s ease-out
+    
+    &:focus
+        border: solid 0.1rem darken($second-color, 1)
+        outline: solid 0.2rem  transparentize($second-color, .5)

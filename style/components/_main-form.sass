@@ -1,0 +1,121 @@
+$width-form: 60.5rem
+$height-form: 28.25rem
+
+.form-container
+    box-shadow: $shadow2
+    display: flex
+    flex-direction: column
+    align-items: center
+    background-color: #ffffff
+    border-radius: 1.5rem
+    position: relative
+    padding: 2rem 0
+    min-height: $height-form
+    height: fit-content
+
+    @media screen and (min-width: $xl) 
+        width: $width-form
+   
+    @media screen and (max-width: $xl)
+        width: $width-form * .75
+
+    @media screen and (max-width: $lg)
+        width: 100%
+        min-height: calc( 100vh - $header-height - 1rem )
+        border-radius: 0%
+        padding: 0
+    
+    @media screen and (min-width: $lg)
+        margin: 2rem 0
+
+    @media screen and (max-width: $md)
+        min-height: calc( 100vh - $header-height )
+    @media screen and (max-width: $xs)
+        text-align: center
+
+    form
+        width: 80%
+
+        > div
+            width: 100%
+
+    > div
+        width: fit-content 
+
+    .logo-sipam
+        position: absolute
+        height: 5rem
+        top: 2%
+        right: 2%
+
+        @media screen and (max-width: $md)
+            display: none
+
+    h1
+        margin: 1rem 0
+        font-weight: bold
+
+        @media screen and (max-width: $xs)
+            font-size: 1.6rem
+            margin: 1rem 0 2rem 0
+
+    label
+        color: #494949
+        font-size: 1.3rem
+
+        @media screen and (max-width: 300px)
+            font-size: 1rem
+
+        i
+            color: $dark
+            background-color: $first-color
+            border-radius: 100%
+            margin-right: .5rem 
+            padding: .4rem
+
+            &.warning
+                background-color: $warning-color !important 
+
+    select, input[type="text"]
+        text-indent: .5rem
+        
+    select
+        height: 2.5rem 
+
+    .campo
+        @include input-1(rgba(0,0,0,.7))
+        width: 100%
+        font-size: 1.2rem
+        height: 2.6rem
+
+        @media screen and (max-width: $xs)
+            max-width: 100%
+
+        &[name="num_maleta"]
+            width: 8rem
+
+        &[name="num_processo"], &[name="num_prorrogacao"]
+            width: 16rem
+
+        &.date
+            width: 12rem
+            text-align: center
+
+    .sigla
+        width: 10rem
+        text-transform: uppercase
+        text-align: center
+        text-indent: 0 !important
+
+    textarea
+        height: 12rem !important
+        resize: none
+
+    button[type="submit"]
+        @include button-1($second-color, $white-color)
+        height: 3.5rem
+        width: 12.5rem
+        margin: .5rem 0
+
+        @media screen and (max-width: $md)
+            margin: 1rem 0 2rem 0
